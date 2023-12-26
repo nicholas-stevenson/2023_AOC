@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+// https://adventofcode.com/2023/day/5
 
 const EXAMPLE: &str = "src/bin/example.txt";
 const INPUT: &str = "src/bin/input.txt";
@@ -126,7 +126,6 @@ impl Map {
         if self.map.is_empty() {
             panic!("Map is empty, unable to compute input: {}", input)
         }
-        let mut conversion_table: HashMap<u64, u64> = HashMap::new();
 
         for map in &self.map {
             let destination_range_start = map[0];
@@ -152,7 +151,6 @@ fn part1(file_path: &str) -> u64 {
     for seed in seeds.seeds {
         let location = MapsCascade::calculate_cascade(seed, &maps);
         locations.push(location);
-        println!("Seed: {}, Location: {}", seed, location)
     }
 
     return locations.iter().cloned().min().unwrap();
